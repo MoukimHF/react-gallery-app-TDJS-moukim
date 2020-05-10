@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import Load from './load';
 export default class Search extends Component {
     state = {
-        searchText: ''
+        searchText: '',
+        loading:true
       }
       onSearchChange = e => {
         this.setState({ searchText: e.target.value });
@@ -11,9 +12,13 @@ export default class Search extends Component {
       handleSubmit = e => {
         e.preventDefault();
         this.props.onSearch(this.query.value);
+        let path =`/search/${this.query.value}`;
+        this.props.history.push(path);
         e.currentTarget.reset();
       }
+
       render() {  
+   
         return (
     <div className="container">
         <form className="search-form" onSubmit={this.handleSubmit}>

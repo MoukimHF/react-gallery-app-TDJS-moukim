@@ -5,22 +5,24 @@ import NoPhotos from './NoPhotos'
 const Photos = props => { 
 
     const results = props.data;
-    let imgss;
+    let images;
   
     if (results.length>0){
-        imgss = results.map(
+        images = results.map(
         img =>
         < Photo url={`http://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`}  key={img.id} />
       );
     }
     else {
-      imgss = <NoPhotos/>
+        images = <NoPhotos/>
     }
   
     return(
+        <div className="photo-container">
       <ul >
-        {imgss}
+        {images}
       </ul> 
+      </div>
     );
   }
     
